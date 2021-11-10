@@ -19,6 +19,22 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+
+1. Enzyme install: npm install --save-dev enzyme
+  1.1 Enzyme-to-json install: npm install --save-dev enzyme-to-json
+  2. React 17 adapter install: npm install --save-dev @wojtekmaj/enzyme-adapter-react-17 --legacy-peer-deps
+  3. Configure setupTests.js:
+
+```
+import Enzyme from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import {createSerializer} from 'enzyme-to-json';
+
+Enzyme.configure({ adapter: new Adapter() });
+expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
+
+```
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
