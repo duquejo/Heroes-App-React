@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { heroImages } from '../../helpers/heroImages';
 import { getHeroById } from '../../selectors/getHeroById';
+
+// import batman from "../../assets/heroes/dc-batman.jpg"; Direct resource
 
 export const HeroScreen = () => {
 
@@ -32,7 +35,12 @@ export const HeroScreen = () => {
     <div className="row mt-5">
 
       <div className="col-4">
-        <img src={ `../assets/heroes/${ heroeId }.jpg` } className="img-thumbnail animate__animated animate__fadeInLeft" alt={ superhero }/>
+        <img alt={ superhero }
+             src={ heroImages( `./${ heroeId }.jpg` ).default }
+             //  src={ batman } Import
+             //  src={ `../assets/heroes/${ heroeId }.jpg` } Assets
+             className="img-thumbnail animate__animated animate__fadeInLeft"/> 
+             
       </div>
       <div className="col-8 animate__animated animate__fadeIn">
         <h3>{ superhero }</h3>
